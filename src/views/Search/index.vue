@@ -1,42 +1,45 @@
 <template>
-  <div style="position: relative" @click="$router.push('/citylist')">
-    <van-search
-      round
-      v-model="value"
-      show-action
-      :label="city"
-      :thisCity="thisCity"
-      placeholder="请输入搜索关键词"
-      @click="onSearch"
-    >
-      <template #action>
-        <!-- <van-icon name="flag-o" /> -->
-        <div>
-          <i class="iconfont icon-ditu"></i>
+  <div style="position: relative">
+    <van-search round show-action placeholder="请输入搜索关键词">
+      <template #label>
+        <div @click="onClick">
+          {{ city ? city : "北京" }}
         </div>
-        <!-- <div @click="onSearch">搜索</div> -->
+      </template>
+      <template #action>
+        <div @click="onMap"><van-icon name="location" /></div>
       </template>
     </van-search>
   </div>
 </template>
 
 <script>
-
+// import { getAreaInfo } from '@/api/city'
 export default {
-  created () { },
+  created () {
+    // 调用查询城市信息
+    // this.getAreaInfo()
+  },
   data () {
     return {
-      value: '',
-      city: '北京'
+      city: this.$store.state.user.cityobj.label// 获取当前城市数据
     }
   },
   methods: {
-    onSearch () {
-      console.log('onsearch')
+    // 左侧城市跳转城市列表
+    onClick () {
+      // console.log(1)
+      this.$router.push('/citylist')
     },
-    thisCity (city) {
-      this.thisCity = city
+    // 地图点击跳转页面
+    onMap () {
+      this.$router.push('/map')
     }
+    // 根据城市名称查询该城市的信息
+    // async getAreaInfo () {
+    //   const res = await getAreaInfo()
+    //   console.log(res)
+    // }
   },
   computed: {},
   watch: {},

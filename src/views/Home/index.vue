@@ -7,10 +7,22 @@
       </van-swipe-item>
     </van-swipe>
     <van-grid :border="flag" clickable :column-num="4">
-      <van-grid-item icon="home-o" text="整租" to="/findhome" ><img src="@/assets/imges/下载 (1).png" alt=""><p>整租</p></van-grid-item>
-      <van-grid-item icon="home-o" text="整租" to="/findhome" ><img src="@/assets/imges/下载 (1).png" alt=""><p>合租</p></van-grid-item>
-      <van-grid-item icon="home-o" text="整租" to="/findhome" ><img src="@/assets/imges/下载 (1).png" alt=""><p>地图找房</p></van-grid-item>
-      <van-grid-item icon="home-o" text="整租" to="/findhome" ><img src="@/assets/imges/下载 (1).png" alt=""><p>去出租</p></van-grid-item>
+      <van-grid-item icon="home-o" text="整租" to="/findhome"
+        ><img src="@/assets/imges/下载 (1).png" alt="" />
+        <p>整租</p></van-grid-item
+      >
+      <van-grid-item icon="home-o" text="整租" to="/findhome"
+        ><img src="@/assets/imges/下载 (1).png" alt="" />
+        <p>合租</p></van-grid-item
+      >
+      <van-grid-item icon="home-o" text="整租" to="/map"
+        ><img src="@/assets/imges/下载 (1).png" alt="" />
+        <p>地图找房</p></van-grid-item
+      >
+      <van-grid-item icon="home-o" text="整租" to="/renthouse"
+        ><img src="@/assets/imges/下载 (1).png" alt="" />
+        <p>去出租</p></van-grid-item
+      >
     </van-grid>
     <div class="more">
       <div class="top">
@@ -20,13 +32,12 @@
         </p>
       </div>
       <van-grid gutter="10px" direction="horizontal" :column-num="2">
-        <van-grid-item icon="photo-o"
-        v-for="item in groups" :key="item.id"
-          ><div class="pic" >
+        <van-grid-item icon="photo-o" v-for="item in groups" :key="item.id"
+          ><div class="pic">
             <img :src="'http://liufusong.top:8080' + item.imgSrc" alt="" />
             <div>
               <p>{{ item.title }}</p>
-            <p>{{ item.desc }}</p>
+              <p>{{ item.desc }}</p>
             </div>
           </div></van-grid-item
         >
@@ -38,16 +49,17 @@
 <script>
 import Search from '@/views/Search'
 import { swipeApi, groupsApi } from '@/api/home'
+
 export default {
   async created () {
     const res = await swipeApi()
-    console.log(res)
+    // console.log(res)
     res.data.body.forEach(item => {
       this.images.push(item.imgSrc)
     })
 
     const res1 = await groupsApi()
-    console.log('res1', res1)
+    // console.log('res1', res1)
     this.groups = res1.data.body
   },
   data () {
@@ -57,7 +69,9 @@ export default {
       flag: false
     }
   },
-  methods: {},
+  methods: {
+
+  },
   computed: {},
   watch: {},
   filters: {},
@@ -108,7 +122,7 @@ export default {
       }
       div {
         flex: 1;
-        p{
+        p {
           margin: unset;
           font-size: 26px;
         }
@@ -116,16 +130,16 @@ export default {
     }
   }
 }
-.van-grid-item{
-  img{
+.van-grid-item {
+  img {
     width: 120px;
     height: 120px;
   }
-  p{
+  p {
     font-size: 14px;
   }
 }
-.swiperimg{
+.swiperimg {
   height: 424px;
   width: 100%;
 }

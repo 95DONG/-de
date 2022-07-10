@@ -12,7 +12,11 @@ const Home = () => import('@/views/Home')
 const MessAge = () => import('@/views/MessAge')
 const My = () => import('@/views/My')
 const FindHome = () => import('@/views/FindHome')
+const Map = () => import('@/views/Map')
 const getCityList = () => import('@/components/CityLIst.vue')
+const RentHouse = () => import('@/views/RentHouse/index.vue')
+const Detail = () => import('@/views/Detail/index.vue')
+const Collect = () => import('@/views/Collect/index.vue')
 
 Vue.use(VueRouter)
 Vue.use(Vant)
@@ -29,7 +33,11 @@ const routes = [
     ]
   },
   { path: '/login', component: Login },
-  { path: '/citylist', component: getCityList }
+  { path: '/citylist', component: getCityList },
+  { path: '/map', component: Map },
+  { path: '/renthouse', component: RentHouse },
+  { path: '/detail', component: Detail },
+  { path: '/collect', component: Collect }
 ]
 
 const router = new VueRouter({

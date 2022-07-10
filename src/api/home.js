@@ -10,3 +10,12 @@ export const groupsApi = () => {
     url: '/home/groups'
   })
 }
+
+export const getHouseCondition = (id) => {
+  return request({
+    url: '/houses/condition',
+    params: {
+      id
+    }
+  })
+}

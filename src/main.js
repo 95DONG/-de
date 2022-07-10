@@ -3,10 +3,11 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import { Lazyload } from 'vant'
-import '@/assets/iconfont/font/iconfont.css'
+import Vuex from 'vuex'
 Vue.config.productionTip = false
 
 Vue.use(Lazyload)
+Vue.use(Vuex)
 
 new Vue({
   router,
